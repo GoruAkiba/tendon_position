@@ -1,0 +1,9 @@
+{
+	"hEdge" : 1800,
+	"hMid"	: 460,
+	"H"		: 2100,
+	"anchor_length" : 50500,
+
+	"span" : 1000,
+	"acuracy" : 2
+}

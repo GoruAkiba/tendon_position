@@ -1,0 +1,40 @@
+{
+	"data":[
+		{
+			"hEdge" : 1800,
+			"hMid"	: 460,
+			"z_edge": 0,
+			"z_mid" : 0
+		},
+		{
+			"hEdge" : 1500,
+			"hMid"	: 340,
+			"z_edge": 0,
+			"z_mid" : 0
+		},
+		{
+			"hEdge" : 1200,
+			"hMid"	: 220,
+			"z_edge": 0,
+			"z_mid" : 0
+		},
+		{
+			"hEdge" : 900,
+			"hMid"	: 100,
+			"z_edge": 0,
+			"z_mid" : 0
+		},
+		{
+			"hEdge" : 600,
+			"hMid"	: 100,
+			"z_edge": 0,
+			"z_mid" : -150
+		},
+		{
+			"hEdge" : 300,
+			"hMid"	: 100,
+			"z_edge": 0,
+			"z_mid" : 150
+		}
+	]
+}

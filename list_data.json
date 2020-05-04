@@ -2,19 +2,19 @@
 	"data":[
 		{
 			"hEdge" : 1800,
-			"hMid"	: 460,
+			"hMid"	: 535,
 			"z_edge": 0,
 			"z_mid" : 0
 		},
 		{
 			"hEdge" : 1500,
-			"hMid"	: 340,
+			"hMid"	: 390,
 			"z_edge": 0,
 			"z_mid" : 0
 		},
 		{
 			"hEdge" : 1200,
-			"hMid"	: 220,
+			"hMid"	: 245,
 			"z_edge": 0,
 			"z_mid" : 0
 		},

@@ -1,11 +1,11 @@
 
 /**
  * [constructor description]
- * @param  {[class]} options.ten1  	[description]
- * @param  {[class]} options.ten2  	[description]
+ * @param  {array} options.ten1  	[description]
+ * @param  {array} options.ten2  	[description]
  * @param  {[double]} options.limit [height's limit of tendon area | bottom flange thickness + corner]
  * @param  {[double]} options.dia   [raw tendon diameter]
- * @return {[class]}               	[...]
+ * @return {null}               	[...]
  */
 class module_contra{
 	constructor({ten1, ten2, limit, dia}){
@@ -30,8 +30,8 @@ class module_contra{
 		 * [list array of each tendon coordinate]
 		 * @type {array}
 		 */
-		this.ten1_pos = ten1.y_pos;
-		this.ten2_pos = ten2.y_pos;
+		this.ten1_pos = ten1;
+		this.ten2_pos = ten2;
 
 		/**
 		 * [radius + clearance requirement govern by VSL brochure]
@@ -61,17 +61,25 @@ class module_contra{
 		});
 
 		/**
-		 * [first of x_coordinate starting contra each other]
-		 * @type {double}
-		 */
-		this.x_firstContra = this.contra[0]? this.contra[0][0] : null;
-
-		/**
 		 * [contra_status]
 		 * @type {bolean}
 		 */
 		this.contra_status = this.contra.length? true : false;
 
+		/**
+		 * [first of x_coordinate starting contra each other]
+		 * @type {double}
+		 */
+		this.x_firstContra = this.contra_status? this.contra[0][0] : null;
+		
+		/**
+		 * [retun y coordinate of first contra]
+		 * @return {arry}   [array of y coordinate]
+		 */
+		this.y_firstContra = this.contra_status? [this.ten1_pos.find(i => { return i[0] == this.x_firstContra})[1], this.ten2_pos.find( i => { return i[0] == this.x_firstContra})[1]] : null;
+
+
+		this.del_y = this.contra_status? this.y_firstContra[0] - this.y_firstContra[1] : null;
 
 	}
 

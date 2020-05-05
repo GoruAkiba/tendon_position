@@ -4,7 +4,7 @@ class tendon_pos{
 	constructor( { hEdge, hMid, z_edge, z_mid, H, anchor_length, span, acuracy}){
 		// init
 		span = !span ? 1000 : span;
-		acuracy = !acuracy ? 1 : acuracy;
+		acuracy = !acuracy ? 0 : acuracy;
 
 		// calculating zEdge & zMid
 		this.zEdge = H - hEdge;
@@ -25,15 +25,15 @@ class tendon_pos{
 
 		this.round = (a,b) => {
 			let rn = 10**b;
-			return Math.floor(a*rn)/rn
+			return Math.round(a*rn)/rn
 		};
 
 		this.verticalAlignment = hEdge !== hMid? true:false;
 		this.horisontalAlignment = z_edge !== z_mid? true:false; 
 
 		// iteration for each x along anchor_length
-		for(var i =0; i <= Math.floor(anchor_length/span); i++){
-			var x = i == Math.floor(anchor_length/span) ? anchor_length : i*span;
+		for(var i =0; i <= Math.round(anchor_length/span); i++){
+			var x = i == Math.round(anchor_length/span) ? anchor_length : i*span;
 			var opt = {
 				x :x,
 				A : this.A,

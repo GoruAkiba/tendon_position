@@ -42,6 +42,7 @@
 console.log("analysis begin")
 const { data } = require("./list_data.json");
 const tendon_pos = require("./module_pos.js");
+const tendon_hor = require("./module_hor.js");
 const module_contra = require("./module_contra.js");
 const fs = require("fs");
 
@@ -50,7 +51,7 @@ const fs = require("fs");
 var H = 2100,
 	anchor_length = 50500,
 	span = 1000,
-	acuracy = 2;
+	acuracy = 0;
 
 var tendons = new Map(),
 	coupleHorizon = new Map();
@@ -111,34 +112,11 @@ data.map((e,i) => {
 
 // console.log(ccr(opt))
 
-// TRIGONOMETRI FUNC BEGIN
-// -------------------------------------------------
-function sind(d) {
-  return Math.sin(Math.PI*d/180.0); 
-}
 
-function cosd(d) {
-  return Math.cos(Math.PI*d/180.0); 
-}
-
-function tand(d) {
-  return Math.tan(Math.PI*d/180.0); 
-}
-
-function toRad(d){
-	return d*Math.PI/180;
-}
-
-function toDeg(r){
-	return r*180/Math.PI;
-}
-
-// TRIGONOMETRI FUNC END
-// -------------------------------------------------
 
 
 // init taper of girder
-var tp = 500, // bottom flange thickness + corner
+var tp = 600, // bottom flange thickness + corner
 	dia = 85; // from brochure
 	rad = (dia*0.7+dia)/2; // VSL brochure
 console.log(rad);
@@ -189,8 +167,8 @@ var contra = new Map();
 tendons.forEach(async (e,i) => {
 	if(tendons.size-1 > i){
 		var opt = {
-			ten1 : e,
-			ten2 : tendons.get(i+1),
+			ten1 : e.y_pos,
+			ten2 : tendons.get(i+1).y_pos,
 			limit : tp,
 			dia: dia
 			};
@@ -199,8 +177,8 @@ tendons.forEach(async (e,i) => {
 	}
 
 })
-
-// console.log(contra);
+console.log(contra.get(4));
+console.log( new tendon_hor({...contra.get(4), Bf: 700/2, z_mid: 150, anchor_length:anchor_length, span:span, acuracy : acuracy}) );
 
 
 
@@ -215,3 +193,4 @@ tendons.forEach(async (e,i) => {
 // 	return console.log(contra)
 // }
 // setTimeout(cek,1000);
+// 

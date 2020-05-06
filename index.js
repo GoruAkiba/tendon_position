@@ -85,6 +85,10 @@ tendons.forEach(async (e,i) => {
 
 });
 
+
+/**
+ * Calc horizontal coordinate
+ */
 coupleHorizon.forEach(async (e,i) => {
 	var cntr = contra.get(e.similar[0]),
 		hor = new tendon_hor({...cntr, Bf: Bf/2, z_edge: e.z_edge, z_mid: e.z_mid, anchor_length:anchor_length, span:span, acuracy : acuracy})
@@ -95,6 +99,9 @@ coupleHorizon.forEach(async (e,i) => {
 });
 
 
+/**
+ * assembly result
+ */
 tendons.forEach(async (e,i)=>{
 	var origin_hor = horizon.get(i) || null,
 		coordinate = e.y_pos.map(d => {
@@ -112,6 +119,21 @@ tendons.forEach(async (e,i)=>{
 })
 
 
+/**
+ * write output as text
+ */
+var time = new Date().toLocaleDateString();
+console.log("creating output.....")
+tendonGroup.forEach(async (e,i)=>{
+	i = i+1
+	i = i > 9 ? i : "0"+i;
+	var f_name = `./output/[${time}]_tendon_no.${i}.json`;
+	await fs.writeFile(f_name, JSON.stringify(e.coordinate,null,4), "utf8", (err)=>{
+		if(err) return console.log(`error while saving ${f_name}`);
+		console.log(`"${f_name}" | saved`)
+	})
+
+})
 
 // var d = new tendon_hor({...contra.get(4), Bf: 700/2, z_edge: 0, z_mid: -150, anchor_length:anchor_length, span:span, acuracy : acuracy});
 // var d = tendons.get(1);

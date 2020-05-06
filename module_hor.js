@@ -1,7 +1,7 @@
 const module_pos = require("./module_pos.js")
 
 class module_hor{
-	constructor({x_firstContra, contra, del_y, req_r, anchor_length, z_edge, z_mid, Bf, span, acuracy}){
+	constructor({x_firstContra, del_y, req_r, anchor_length, z_edge, z_mid, Bf, span, acuracy}){
 		// super();
 
 		this.trigonometry = require("./module_trigonometry.js");
@@ -23,8 +23,22 @@ class module_hor{
 			acuracy : acuracy
 		}
 		var zpos = new module_pos(opt);
-		console.log(zpos);
+		// console.log(zpos);
+		this.A = zpos.A;
+		this.B = zpos.B;
+		this.C = zpos.C;
 		this.z_pos = zpos.y_pos.map(e => {return [e[0]+x_firstContra,e[1]]});
+
+		this.firstX = this.z_pos[0][0];
+		this.lastX = this.z_pos[this.z_pos.length-1][0];
+		this.calc = (x,acuracy) => {
+			// if(x<this.firstX || x>this.lastX) return 0;
+			x = (x-this.firstX)/1000;
+			acuracy = !acuracy? 0 : acuracy;
+			var raw = this.round((this.A*x**2+this.B*x+this.C)*1000,acuracy);
+
+			return raw > 0? raw:0;
+		}
 	}
 }
 

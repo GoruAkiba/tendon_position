@@ -1,4 +1,11 @@
 {
+	"H" : 2100,
+	"anchor_length" : 50500,
+	"span" : 1000,
+	"Bf"	: 700,
+	"acuracy" : 0,
+	"limit" :500,
+	"dia" : 85,
 	"data":[
 		{
 			"hEdge" : 1800,

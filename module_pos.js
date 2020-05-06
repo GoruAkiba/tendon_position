@@ -42,6 +42,12 @@ class tendon_pos{
 				acuracy : acuracy
 			}
 			this.y_pos.push(this.Zi(opt));
+		};
+
+		this.calc = (x,acuracy)=>{
+			acuracy = !acuracy? 0 : acuracy;
+			var raw = this.Zi({x:x,A:this.A,B:this.B,C:this.C,acuracy})[1];
+			return raw > 0? raw: 0;
 		}	
 
 	}

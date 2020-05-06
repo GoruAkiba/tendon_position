@@ -20,7 +20,7 @@ class tendon_pos{
 
 		this.Zi = ({x,A,B,C,acuracy}) => {
 			x = x/1000
-			return [x*span,this.round((A*x**2+B*x+C)*1000,acuracy)] 
+			return [x*1000,this.round((A*x**2+B*x+C)*1000,acuracy)] 
 		}
 
 		this.round = (a,b) => {

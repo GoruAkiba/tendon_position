@@ -116,7 +116,10 @@ tendons.forEach(async (e,i)=>{
 		origin_hor:origin_hor,
 		origin_ver:e
 	});
+	console.log(`\nTabel Output coordinat Tendon No.${i>9?i+1 : "0" + (i+1)}` )
+	console.table(coordinate); 
 })
+
 
 
 /**
@@ -139,4 +142,3 @@ tendonGroup.forEach(async (e,i)=>{
 // var d = tendons.get(1);
 // console.log(d.calc(1300));
 // console.log(tendons.get(1))
-// console.log(JSON.stringify(tendonGroup.get(5).coordinate,null,4));
